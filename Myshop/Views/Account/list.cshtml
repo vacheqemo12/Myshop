@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Myshop.Models.V_Unuser>
+
+@{
+    ViewBag.Title = "list";
+}
+
+<h2>Unconfirmed User list</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+           სახელი
+        </th>
+        <th>
+           გვარი
+        </th>
+        <th>
+           შექმნის დრო
+        </th>
+        <th>
+           კონფირმაციის კოდი
+        </th>
+        <th>
+            პაროლი
+        </th>
+        <th>
+           მეილი
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        
+    </tr>
+}
+
+</table>

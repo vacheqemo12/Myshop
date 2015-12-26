@@ -1,0 +1,38 @@
+﻿@model Myshop.Models.Register
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>რეგისტრაცია</h2>
+<form action="/Account/Register" method="post">
+    <div>
+        <input type="text" class="form-control" name="Name" placeholder="Name">
+    </div>
+    <br>
+    <div>
+        <input type="text" class="form-control" name="Surname" placeholder="Surname">
+
+    </div>
+    <br>
+    <div>
+        <input type="text" class="form-control" name="Email" placeholder="Email">
+    </div>
+    <br>
+    <div>
+        <input type="password" class="form-control" name="Password" placeholder="Password">
+
+    </div>
+    <br>
+    <div>
+        <input type="password" class="form-control" name="ConfirmPassword" placeholder="Confirm Password">
+    </div>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Register</button>
+    </div>
+    <div class="form-group" style="color:red; font-size:14px;">
+        @ViewBag.error
+    </div>
+
+</form>

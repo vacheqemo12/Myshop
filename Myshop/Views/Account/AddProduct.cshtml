@@ -1,0 +1,33 @@
+﻿@model Myshop.Models.V_Product
+
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<form action="/Account/AddProduct" method="post" enctype="multipart/form-data" style="margin-top:15px">
+    <div class="form-group">
+
+        <input type="text" class="form-control" name="Product_Name" placeholder="პროდუქტის სახელი"/>
+
+    </div>
+    
+    <div class="form-group">
+
+        <input type="text" class="form-control" name="Price" placeholder="ფასი" />
+
+    </div>
+    <div class="form-group">
+        <label for="comment">დახასიათება</label>
+        <textarea name="Product_Description" class="form-control" rows="5" id="comment" placeholder="პროდუქტის დახასიათება"></textarea>
+    </div>
+    <div class="form-group">
+
+        <input type="file" class="form-control" name="Product_image" placeholder="სურათის ატვირთვა" />
+
+    </div>
+    <div class="form-group">
+
+        <input type="submit" class="btn btn-default" name="Add" placeholder="დამატება" />
+
+    </div>
+</form>

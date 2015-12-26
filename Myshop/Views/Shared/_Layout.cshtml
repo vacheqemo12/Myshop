@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <form style="margin-left:20px;margin-top:30px" id="regform" action="/Account/Register" method="post">
+        <div>
+            <input type="text" class="form-control" name="Name" placeholder="Name">
+        </div>
+        <br>
+        <div>
+            <input type="text" class="form-control" name="Surname" placeholder="Surname">
+
+        </div>
+        <br>
+        <div>
+            <input type="text" class="form-control" name="Email" placeholder="Email">
+        </div>
+        <br>
+        <div>
+            <input type="password" class="form-control" name="Password" placeholder="Password">
+
+        </div>
+        <br>
+        <div>
+            <input type="password" class="form-control" name="ConfirmPassword" placeholder="Confirm Password">
+        </div>
+        <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Register</button>
+        </div>
+        <div class="form-group" style="color:red; font-size:14px;">
+            @ViewBag.error
+        </div>
+
+    </form>
+
+    <form style="margin-left:20px" id="loginform" action="/Account/Login" method="post">
+        <div class="form-group"></div>
+
+        <div>
+            <input type="text" class="form-control" name="Email" placeholder="ელ. ფოსტა">
+        </div>
+        <br>
+        <div>
+            <input type="password" class="form-control" name="Password" placeholder="პაროლი">
+
+            <br>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Login</button>
+        </div>
+        <br>
+        <div class="form-group" style="color:red;font-size:14px; ">
+            @ViewBag.error
+        </div>
+        <div class="form-group" style="color:red;font-size:14px; ">
+            <a href="/Account/Forgot" style="color:aqua;font-size:15px;">პაროლის აღდგენა</a>
+        </div>
+    </form>
+    <script>
+    $(document).ready(function () {
+
+        $('#regform').hide();
+        $('#registarcia').click(function () {
+            $('#regform').slideToggle(300);
+            $('#loginform').hide();
+        });
+        $('#loginform').hide();
+        $('#login').click(function () {
+            $('#loginform').slideToggle(300);
+            $('#regform').hide();
+        });
+    });
+    </script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("კატალოგი", "shop", "Account")</li>
+                    <li>@Html.ActionLink("products", "Products", "Account")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["user"] == null)
+                    {
+                        <button style="margin-top:5px" id="registarcia" type="submit" class="btn btn-default">რეგისტრაცია</button>
+                        <button  style="margin-top:5px" id="login" type="submit" class="btn btn-default">სისტემაში შესვლა</button>
+
+
+
+                        @*<li id="registarcia">@Html.ActionLink("რეგისტრაცია", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li id="dalogineba">@Html.ActionLink("სისტემაში შესვლა", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+                    }
+                    else {                <li style="color:white;margin-top:15px;">გამარჯობა  @Session["user"] </li>
+                    <li>@Html.ActionLink("სისტემიდან გამოსვლა", "Logout", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("პროდუქტის დამატება", "AddProduct", "Account", routeValues: null, htmlAttributes: new { id = "AddproductLink" })</li>
+                    }
+                    
+                </ul>
+                
+                
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

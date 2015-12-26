@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Myshop.Models.V_Product>
+
+@{
+    ViewBag.Title = "shop";
+}
+
+<h2>shop</h2>
+@foreach (var item in Model)
+{
+<div style="width:200px; height:250px; border:solid; float:left; margin-left:20px;">
+
+    <div style="margin-left:50px;">
+        <img width="100px" src="@item.Product_image"/>
+
+    </div>
+    <h4> <center><b>@item.Product_name </b></center></h4>
+    <p><center>ფასი:<b>@item.Price</b></center></p>
+    <p><b>დახასიათება:</b> @item.Product_description</p>
+</div>
+}

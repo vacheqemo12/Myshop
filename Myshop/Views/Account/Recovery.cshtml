@@ -1,0 +1,27 @@
+﻿@model Myshop.Models.Password
+
+@{
+    ViewBag.Title = "Recovery";
+}
+
+<form action="/Account/Recovery" method="post">
+    <div class="form-group"></div>
+
+    <div>
+        <input type="password" class="form-control" name="FirstPassword" placeholder="პაროლი">
+    </div>
+    <br>
+    <div>
+        <input type="password" class="form-control" name="SeconPassword" placeholder="გაიმეორეთ პაროლი">
+    </div>
+    <br>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">პაროლის შეცვლა</button>
+    </div>
+    <br>
+    
+        <span style="color:red;">@ViewBag.error</span>
+    
+</form>
